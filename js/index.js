@@ -119,19 +119,31 @@ new Vue({
         qtyUpdate(id, num) {
             const vm = this;
             vm.isLoading = true;
-            const url = `${vm.id.apiPath}${vm.id.uuid}/ec/shopping`;
-            const cart = {
+            const data = {
                 product: id,
                 quantity: num,
             };
-            axios.patch(url, cart)
-                .then(() => {
-                    vm.isLoading = false;
-                    vm.getCart();
-                })
-                .catch(error => {
-                    console.log(error);
-                })
+            if (num === 0) { //為0則刪除商品
+                const url = `${vm.id.apiPath}${vm.id.uuid}/ec/shopping/${id}`;
+                axios.delete(url)
+                    .then(() => {
+                        vm.isLoading = false;
+                        vm.getCart();
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            } else {
+                const url = `${vm.id.apiPath}${vm.id.uuid}/ec/shopping`;
+                axios.patch(url, data)
+                    .then(() => {
+                        vm.isLoading = false;
+                        vm.getCart();
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            }
         },
         changeSearch() {
             this.opensearch = false;
