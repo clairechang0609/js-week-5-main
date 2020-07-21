@@ -96,12 +96,10 @@ new Vue({
             const vm = this;
             vm.isLoading = true;
             const url = `${vm.id.apiPath}${vm.id.uuid}/ec/shopping`;
-
             const data = {
                 product: id,
                 quantity: num,
             };
-
             axios.patch(url, data)
                 .then(() => {
                     vm.isLoading = false;

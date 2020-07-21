@@ -130,7 +130,7 @@
                 <li class="item" v-for="product in showProducts" :key="product.id">
                     <a href="#">
                         <div class="card-img" :style="`background-image: url(${product.imageUrl[0]})`">
-                            <button type="button" class="add-btn" @click.prevent="addToCart(product)">Add to Cart</button>
+                            <button type="button" class="add-btn" @click.prevent="addToCart(product.id)">Add to Cart</button>
                         </div>
                         <div class="card-text">
                             <h5 class="card-title">{{ product.title }}</h5>

@@ -69,21 +69,6 @@ new Vue({
                     console.log(error);
                 })
         },
-        addToCart(item) {
-            const vm = this;
-            const url = `${vm.id.apiPath}${vm.id.uuid}/ec/shopping`;
-            const cart = {
-                product: item.id,
-                quantity: 1,
-            };
-            axios.post(url, cart)
-                .then(() => {
-                    vm.getCart();
-                })
-                .catch( error => {
-                    console.log(error);
-                });
-        },
         getCart() {
             const vm = this;
             this.isLoading = true;
@@ -114,21 +99,35 @@ new Vue({
                     console.log(error);
                 })
         },
+        addToCart(id) {
+            const vm = this;
+            vm.isLoading = true;
+            const url = `${vm.id.apiPath}${vm.id.uuid}/ec/shopping`;
+            const cart = {
+                product: id,
+                quantity: 1,
+            };
+            axios.post(url, cart)
+                .then(() => {
+                    vm.isLoading = false;
+                    vm.getCart();
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
         qtyUpdate(id, num) {
             const vm = this;
             vm.isLoading = true;
             const url = `${vm.id.apiPath}${vm.id.uuid}/ec/shopping`;
-
-            const data = {
+            const cart = {
                 product: id,
                 quantity: num,
             };
-
-            axios.patch(url, data)
+            axios.patch(url, cart)
                 .then(() => {
                     vm.isLoading = false;
                     vm.getCart();
-                    console.log(vm.cart);
                 })
                 .catch(error => {
                     console.log(error);
