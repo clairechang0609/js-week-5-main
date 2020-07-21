@@ -59,18 +59,25 @@ new Vue({
                 .then((response) => {
                     vm.isLoading = false;
                     vm.cart = response.data.data;
-                    vm.cart.forEach((item) => {
-                        vm.totalPrice += ( item.product.price * item.quantity );
-                    });
-                    if (vm.totalPrice > 3000) {
-                        vm.deliveryFee = 0;
-                    } else {
-                        vm.deliveryFee = 350;
-                    }
+                    vm.getTotalPrice();
                 })
                 .catch(error => {
                     console.log(error);
                 })
+        },
+        getTotalPrice() {
+            const vm = this;
+            vm.totalPrice = 0;
+            vm.cart.forEach((item) => {
+                vm.totalPrice += (item.product.price * item.quantity);
+                console.log(item.product.price, item.quantity);
+                console.log(vm.totalPrice);
+            });
+            if (vm.totalPrice > 3000) {
+                vm.deliveryFee = 0;
+            } else {
+                vm.deliveryFee = 350;
+            }
         },
         deleteCartItem(id) {
             const vm = this;

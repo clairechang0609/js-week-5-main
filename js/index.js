@@ -69,12 +69,12 @@ new Vue({
                     console.log(error);
                 })
         },
-        addToCart(item, quantity = 1) {
+        addToCart(item) {
             const vm = this;
             const url = `${vm.id.apiPath}${vm.id.uuid}/ec/shopping`;
             const cart = {
                 product: item.id,
-                quantity,
+                quantity: 1,
             };
             axios.post(url, cart)
                 .then(() => {
