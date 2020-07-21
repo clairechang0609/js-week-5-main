@@ -1,0 +1,483 @@
+.wrap
+    max-width: 1024px
+    position: relative
+    margin: 0 auto
+.top
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 0 20px 0 30px
+    @include media-w896
+        padding: 0 10px 0 20px
+    @include media-w767
+        justify-content: center
+    @include media-w667
+        flex-direction: column
+        align-items: flex-start
+        padding: 0 0 0 30px
+    @include media-w568
+        align-items: center
+        padding: 0 0 40px 0
+    &__icon
+        display: flex
+        @include media-w767
+            position: absolute
+            left: 30px
+        @include media-w667
+            position: static
+            padding: 10px 0 0 5px
+        li
+            a
+                width: 25px
+                height: 25px
+                font-size: 10px
+                display: flex
+                justify-content: center
+                align-items: center
+                text-decoration: none
+                border-radius: 50%
+                margin: 5px
+                border: 1px solid $dark-beige
+                color: $dark-beige
+                &:hover
+                        color: $white
+                        background: $dark-beige
+    &__menu
+        display: flex
+        flex-wrap: wrap
+        align-items: center
+        &.hide
+            display: none
+        li
+            a
+                display: flex
+                align-items: flex-start
+                text-decoration: none
+                margin: 18px 0
+                padding: 0 15px
+                font-weight: 300
+                color: $black
+                border-right: 1px solid $black
+                &:hover
+                    color: $gray
+                @include media-w667
+                    margin: 15px 0
+                span
+                    font-size: 12px
+                    padding-left: 3px      
+            &:nth-last-child(2) a
+                border-right: none
+                @include media-w767
+                    border-right: 1px solid $black
+            &:last-child a
+                border-right: none
+        .ham-btn
+            padding: 0 15px
+            cursor: pointer
+            display: none
+            background: $white
+            @include media-w767
+                display: block
+            span
+                display: block
+                margin: 4px 0
+                width: 20px
+                height: 1px
+                background: $black
+                transition: 0.3s ease-in-out
+            &:hover
+                span
+                    background: $gray
+    &__main-menu
+        display: none
+        width: 100%
+        position: absolute
+        left: 0
+        top: 45px
+        background: $white
+        padding: 50px 0 70px 15%
+        z-index: 1000
+        transform: scaleY(0)
+        transform-origin: top
+        transition: 0.3s ease-in-out
+        @include media-w767
+            display: block
+        @include media-w667
+            top: 85px
+        @include media-w568
+            top: 125px
+        @include media-w414
+            padding: 50px 0 70px 10%
+        > li
+            width: 200px
+            > a
+                display: flex
+                flex-direction: column
+                align-items: left
+                height: 50px
+                padding: 10px
+                color: $black
+                text-decoration: none
+                overflow: hidden
+                &:hover
+                    span:nth-child(1)
+                        transform: scaleY(0) translateY(-33px)
+                    span:nth-child(2)
+                        transform: translateY(-33px)
+                span
+                    transition: 0.3s cubic-bezier(0.39, 0.575, 0.565, 1)
+                    position: relative
+                    padding: 10px
+        .top__all-product-list
+            position: absolute
+            top: 160px
+            right: 25%
+            display: flex
+            flex-direction: column
+            flex-wrap: wrap
+            justify-content: space-evenly
+            transition: 0.5s ease-in-out
+            opacity: 0
+            @include media-w568
+                justify-content: center
+                right: 20%
+            @include media-w414
+                right: 13%
+            li
+                a
+                    display: block
+                    padding: 8.5px
+                    color: $dark-beige
+                    text-decoration: none
+                    font-weight: 300
+                    letter-spacing: 1px
+                    &:hover
+                        color: $beige
+    &.show
+        .ham-btn
+            padding: 0 35px 0 15px
+            width: 20px
+            height: 20px
+            position: relative
+            span
+                top: 5px
+                position: absolute
+                transition: 0.3s ease-in-out
+                &:nth-child(1)
+                    transform: rotate(-135deg)
+                &:nth-child(2)
+                    display: none
+                &:nth-child(3)
+                    transform: rotate(135deg)
+        .top__main-menu
+            transform: scaleY(1)
+        .top__all-product-list
+            &.show
+                opacity: 1
+    &__search
+        position: relative
+        display: none
+        align-items: center
+        padding: 10.5px 0
+        &.show
+            display: flex
+        @include media-w667
+            margin-left: 10px
+        .close-btn
+            position: absolute
+            top: 50%
+            left: 8px
+            transform: translateY(-50%)
+            cursor: pointer
+            padding-right: 10px
+        input
+            font-family: 'Roboto', 'Noto Sans', sans-serif
+            width: 270px
+            font-weight: 300
+            font-size: 14px
+            border: 1px solid $black
+            border-radius: 3px 0 0 3px
+            padding: 5px 10px 5px 25px
+            margin: 0;
+            @include media-w896
+                width: 220px
+            &:focus
+                outline: none
+        .search-btn
+            padding: 6px 10px 5px
+            border: 1px solid $black
+            border-radius: 0 3px 3px 0
+            background: $black
+            color: $white
+            &:focus
+                outline: none
+    .table-wrap
+        display: none
+        position: absolute
+        right: 0px
+        top: 40px
+        width: 500px
+        padding: 30px
+        border: 2px solid $beige
+        background: $white
+        border-radius: 5px
+        z-index: 2000
+        &.show
+            display: block
+        .btn
+            display: block
+            text-align: center
+            width: 100%
+            font-size: 14px
+            background: $beige
+            padding: 8px 12px
+            border: none
+            border-radius: 3px
+            text-decoration: none
+            color: $black
+            &:hover
+                background: $dark-beige
+                color: $white
+    .shopping-table
+        width: 100%
+        margin-bottom: 10px
+        tr
+            margin: 0 20px
+            th, td
+                line-height: 1.2
+                text-align: center
+                vertical-align: middle
+                margin: 10px
+            th
+                padding: 10px 5px
+                font-size: 13px
+                color: $dark-beige
+            td
+                padding: 15px 5px
+                border-top: 1px solid $beige
+                color: rgb(25,25,25)
+                font-size: 13px
+                img
+                    padding-left: 20px
+                &.delete
+                    cursor: pointer
+                    transition: 0.2s ease-in-out
+                    &:hover
+                        color: $dark-beige
+        .select_qty
+            display: flex
+            justify-content: center
+            .input-group
+                display: flex
+                justify-content: center
+                button
+                    border-radius: 0
+                    border: 1px solid $black
+                    background: $white
+                    font-size: 12px
+                    color: $black
+                    padding: 5px 8px
+                    &:focus
+                        outline: none
+                input
+                    -moz-appearance: textfield
+                    text-align: center
+                    width: 40px
+                    border-radius: 0
+                    border: none
+                    border-top: 1px solid $black
+                    border-bottom: 1px solid $black
+                    background: $white
+                    font-size: 12px
+                    color: $black
+                    padding: 4px
+                    &:focus
+                        outline: none
+                input[type='number']
+                    -moz-appearance: textfield
+                input[type='number']::-webkit-outer-spin-button,
+                input[type='number']::-webkit-inner-spin-button
+                    -webkit-appearance: none
+                .reset [type="number"]
+                    -moz-appearance: spinner-textfield
+                .reset input[type='number']::-webkit-outer-spin-button,
+                .reset input[type='number']::-webkit-inner-spin-button
+                    -webkit-appearance: spinner-textfield
+.header
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    z-index: 1000
+    &__logo-wrap
+        display: block
+        position: absolute
+        top: 20px
+        width: 100px
+        height: 100px
+        z-index: 1001
+        cursor: pointer
+        @include media-w767
+            top: 20px
+            right: 40px
+        @include media-w568
+            top: 100px; 
+            left: 50%;
+            transform: translateX(-50%)
+        &:hover .logo-frame
+            animation: rotateLogo 5s linear infinite
+        .logo-frame
+            position: absolute
+            width: 100%
+            height: 100%
+            background: url(../img/hurley-furniture-2-02.svg) no-repeat
+            animation: rotateLogo 10s linear infinite
+        h1
+            .logo
+                position: absolute
+                display: block
+                width: 100%
+                height: 100%
+                background: url(../img/hurley-furniture-2-03.svg) no-repeat
+                text-indent: 101%
+                overflow: hidden
+                white-space: nowrap
+                text-decoration: none
+    &__main-menu
+        position: relative
+        width: 100%
+        padding: 0 30px
+        display: flex;
+        justify-content: space-between
+        margin-bottom: 40px
+        z-index: 1000
+        @include media-w767
+            display: none;
+        &.main-menu-nobanner
+            padding-top: 100px
+        > li
+            > a
+                display: flex
+                flex-direction: column
+                align-items: center
+                height: 50px
+                padding: 10px
+                color: $black
+                text-decoration: none
+                overflow: hidden
+                &:hover
+                    span:nth-child(1)
+                        transform: scaleY(0) translateY(-33px)
+                    span:nth-child(2)
+                        transform: translateY(-33px)
+                span
+                    transition: 0.3s cubic-bezier(0.39, 0.575, 0.565, 1)
+                    position: relative
+                    padding: 10px
+        .header__all-product-list
+            background: $dark-beige
+            width: 95%
+            position: absolute
+            left: 50%
+            border-radius: 5px
+            display: flex
+            justify-content: space-evenly
+            padding: 5px 30px 13px
+            transform: scaleY(0) translateX(-50%)
+            transition: 0.3s ease-in-out
+            transform-origin: top
+            @include media-w896
+                padding: 5px 10px 13px
+            &.show
+                transform: scaleY(1) translateX(-50%)
+            li
+                display: block
+                &:hover img
+                    animation: scaleChange 0.3s
+                a
+                    padding: 20px
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    color: $white
+                    text-decoration: none
+                    font-weight: 300
+                    letter-spacing: 1px
+                    @include media-w896
+                        padding: 20px 0
+                    img
+                        display: block
+                        width: 50px
+                        padding-bottom: 7px
+@include keyframes(rotateLogo)
+    0% 
+        transform: rotate(0)
+
+    100% 
+        transform: rotate(360deg)
+@include keyframes(scaleChange)
+    0%
+        transform: scaleX(1)
+
+    50% 
+        transform: scaleX(0)
+
+    100% 
+        transform: scaleX(1)
+.footer
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    padding: 30px
+    margin-top: 30px
+    background: rgba($gray, 0.1)
+    .text
+        display: flex
+        @include media-w568
+            flex-direction: column
+            align-items: center
+        p
+            font-weight: 100
+            padding: 10px 5px
+.go-top
+    position: fixed
+    right: 25px
+    bottom: 25px
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    border: 1px solid rgba($gray, 0.3)
+    background: $white
+    font-size: 15px
+    cursor: pointer
+    z-index: 1100
+    opacity: 0
+    transition: 0.5s ease-in-out 
+    svg
+        position: absolute
+        stroke: black;
+        stroke-width: 1px;
+        fill: none;
+        stroke-dasharray: 300
+        stroke-dashoffset: 300
+        transform: rotate(-90deg)
+        transition: 1s linear
+        &:hover
+            stroke-dasharray: 300
+            stroke-dashoffset: 0
+.mask
+    display: none
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background: rgba($black, 0.5);
+    z-index: 1999
+    &.open
+        display: block
+

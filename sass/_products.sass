@@ -1,0 +1,120 @@
+.header__banner-products
+    width: 100%
+    height: 300px
+    background-size: cover
+    background-position: center
+    overflow: hidden
+    @include media-w667
+        height: 250px
+.contents-products
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 30px 30px 50px
+    @include media-w767
+        padding: 60px 30px
+    @include media-w568
+        padding: 60px 0
+    h4
+        position: relative
+        text-align: center
+        font-size: 35px
+        padding-bottom: 70px
+        &::before
+            content: ''
+            position: absolute
+            height: 1px
+            width: 40px
+            background: $black
+            top: 50px
+            left: 50%
+            transform: translateX(-50%)
+    .items
+        width: 100%
+        display: flex
+        flex-wrap: wrap
+        @include media-w667
+            justify-content: space-between
+        @include media-w568
+            justify-content: center
+        a
+            text-decoration: none
+            color: $black
+            display: flex
+            flex-direction: column
+            align-items: center
+        .item
+            width: 24%
+            margin-bottom: 40px
+            &:not(:nth-child(4n))
+                margin-right: calc(4% / 3)
+            @include media-w896
+                width: 30%
+                &:not(:nth-child(3n))
+                    margin-right: 5%
+                &:nth-child(3n)
+                    margin-right: 0
+            @include media-w667
+                width: 48%
+                &:not(:nth-child(3n))
+                    margin-right: 0
+            @include media-w568
+                width: 300px
+            .card-img
+                position: relative
+                width: 90%
+                height: 200px
+                background-size: cover
+                background-position: center
+                @include media-w568
+                    height: 250px
+                .add-btn
+                    content: 'Add to Cart'
+                    position: absolute
+                    display: none
+                    text-align: center
+                    bottom: 0
+                    width: 100%
+                    padding: 10px
+                    background: rgba($black, 0.4)
+                    color: $white
+                    font-weight: 300
+                    border: none
+                    transition: 0.3 ease-in-out
+                    &:focus
+                        outline: none
+            &:hover
+                .card-img
+                    .add-btn
+                        display: block
+            .card-text
+                padding: 20px 10px
+                display: flex
+                flex-direction: column
+                align-items: center
+                .card-title
+                    font-size: 15px
+                    font-weight: 500
+                    color: $dark-beige
+                    padding-bottom: 10px
+                .sale-price
+                    display: flex
+                    align-items: center
+                    font-weight: 300
+                    font-style: italic
+                    font-size: 20px
+                    .sale-icon
+                        font-style: initial
+                        font-size: 12px
+                        font-weight: 300
+                        padding: 2px 5px
+                        border-radius: 10px
+                        margin-left: 10px
+                        background: #fad200
+                        color: black
+                .origin-price
+                    font-size: 13px
+                    padding-top: 8px
+                    text-decoration: line-through
+                    font-weight: 300
+                    font-style: italic

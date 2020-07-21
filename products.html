@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hurley Furniture</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="shortcut icon" href="img/hurley-furniture-icon-05.ico">
+    <meta name="description" content="Hurley Furniture">
+
+    <meta property="og:title" content="Hurley Furniture" />
+    <meta property="og:description" content="Hurley Furniture‎" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="www.index.com" />
+    <meta property="og:image" content="img/FB-img.png" />
+
+    <link rel="apple-touch-icon" href="img/Hex-apple-touch-icon.png">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-loading-overlay@3.3.2/dist/vue-loading.css">
+    <link rel="stylesheet" href="sass/all.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="top" :class="{ 'show': openMainMenu }">
+            <ul class="top__icon">
+                <li><a href="#" class="fab fa-twitter twitter"></a></li>
+                <li><a href="#" class="fab fa-facebook-f facebook"></a></li>
+                <li><a href="#" class="fab fa-instagram ig"></a></li>
+            </ul>
+            <ul class="top__menu" :class="{ 'hide': opensearch }">
+                <li><a href="#">ACCOUNT</a></li>
+                <li><a href="#" @click.prevent="shoppingCartOpen = true">CART<span>({{cart.length}})</span> </a></li>
+                <li><a href="#" @click="opensearch = true"><i class="fas fa-search search-icon"></i></a></li>
+                <li class="ham-btn" @click.prevent="openMainMenu = !openMainMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </li>
+            </ul>
+            <div is="shopping" :shoppingcart="cart" :shoppingcartopen="shoppingCartOpen" @deleteProduct="deleteCartItem" @qtyupdate="qtyUpdate"></div>
+            <ul class="top__main-menu">
+                <li><a href="#"><span>HOME</span><span>首頁</span></a></li>
+                <li><a href="#" @click.prevent="getProducts('All'), openMainMenu = !openMainMenu"><span>ALL PRODUCTS</span><span>所有商品</span></a></li>
+                <li class="top__all-product"><a href="#" @click.prevent="openMenu = !openMenu"><span>PRODUCT CATEGORY &nbsp▸</span><span>分類單品 &nbsp▸</span></a>
+                    <ul class="top__all-product-list" :class="{ 'show': openMenu }">
+                        <li><a href="cart.html" @click.prevent="getProducts('Sofa'), openMainMenu = !openMainMenu">Sofa</a></li>
+                        <li><a href="cart.html" @click.prevent="getProducts('Chair'), openMainMenu = !openMainMenu">Chair</a></li>
+                        <li><a href="cart.html" @click.prevent="getProducts('Table'), openMainMenu = !openMainMenu">Table</a></li>
+                        <li><a href="cart.html" @click.prevent="getProducts('Cabinet'), openMainMenu = !openMainMenu">Cabinet</a></li>
+                        <li><a href="cart.html" @click.prevent="getProducts('Side Table'), openMainMenu = !openMainMenu">Side Table</a></li>
+                        <li><a href="cart.html" @click.prevent="getProducts('Lighting'), openMainMenu = !openMainMenu">Lighting</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" @click.prevent="getProducts('Sale'), openMainMenu = !openMainMenu"><span>SALE</span><span>限時特價</span></a></li>
+                <li><a href="#"><span>SHIPPING GUIDE</span><span>運送須知</span></a></li>
+                <li><a href="#"><span>CONTACT</span><span>聯絡我們</span></a></li>
+            </ul>
+            <div is="search" :search="opensearch" @changesearch="changeSearch"></div>
+        </div>
+        <div class="header">
+            <div class="header__logo-wrap">
+                <div class="logo-frame"></div>
+                <h1><a href="index.html" class="logo">Hurley Furniture</a></h1>
+            </div>
+            <div class="header__banner-products" v-if="category === 'All Products'" 
+            :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d567834662a0611dc105759/1400x.webp?source_format=jpg)`"></div>
+            <div class="header__banner-products" v-if="category === 'Sofa'" 
+            :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d567bcdd423dd01667248d2/1400x.webp?source_format=jpg)`"></div>
+            <div class="header__banner-products" v-if="category === 'Chair'" 
+            :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d6bea70b6574a7416f2001c/1400x.webp?source_format=jpg)`"></div>
+            <div class="header__banner-products" v-if="category === 'Table'" 
+            :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5dc6ca47979b2900174c997d/1400x.webp?source_format=jpg)`"></div>
+            <div class="header__banner-products" v-if="category === 'Cabinet'" 
+            :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5dbcdc42350d2e00232e256f/1400x.webp?source_format=jpg)`"></div>
+            <div class="header__banner-products" v-if="category === 'Side Table'" 
+            :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d647934f7aa34003e57f243/1400x.webp?source_format=jpg)`"></div>
+            <div class="header__banner-products" v-if="category === 'Lighting'" 
+            :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5ddb90e29044fe001b6c198b/1400x.webp?source_format=jpg)`"></div>
+            <div class="header__banner-products" v-if="category === 'Sale'" 
+            :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5cf8fdd4e33efe001a669719/1400x.webp?source_format=jpg)`"></div>
+            <ul class="header__main-menu">
+                <li><a href="index.html"><span>HOME</span><span>首頁</span></a></li>
+                <li><a href="#" @click.prevent="getProducts('All')"><span>ALL PRODUCTS</span><span>所有商品</span></a></li>
+                <li class="header__all-product"><a href="#" @click.prevent="openMenu = !openMenu"><span>PRODUCT CATEGORY &nbsp▾</span><span>分類單品 &nbsp▾</span></a>
+                    <ul class="header__all-product-list" :class="{ 'show': openMenu }">
+                        <li><a href="products.html" @click.prevent="getProducts('Sofa'), openMenu = !openMenu">
+                                <img src="img/sofa-04.png" alt="">
+                                <p>Sofa</p>
+                            </a></li>
+                        <li><a href="products.html" @click.prevent="getProducts('Chair'), openMenu = !openMenu">
+                                <img src="img/chair-04.png" alt="">
+                                <p>Chair</p>
+                            </a></li>
+                        <li><a href="products.html" @click.prevent="getProducts('Table'), openMenu = !openMenu">
+                                <img src="img/table-04.png" alt="">
+                                <p>Table</p>
+                            </a></li>
+                        <li><a href="products.html" @click.prevent="getProducts('Cabinet'), openMenu = !openMenu">
+                                <img src="img/cabinet-04.png" alt="">
+                                <p>Cabinet</p>
+                            </a></li>
+                        <li><a href="products.html" @click.prevent="getProducts('Side Table'), openMenu = !openMenu">
+                                <img src="img/sidetable-04.png" alt="">
+                                <p>Side Table</p>
+                            </a></li>
+                        <li><a href="products.html" @click.prevent="getProducts('Lighting'), openMenu = !openMenu">
+                                <img src="img/lamp-04.png" alt="">
+                                <p>Lighting</p>
+                            </a></li>
+                    </ul>
+                </li>
+                <li><a href="#" @click.prevent="getProducts('Sale')"><span>SALE</span><span>限時特價</span></a></li>
+                <li><a href="#"><span>SHIPPING GUIDE</span><span>運送須知</span></a></li>
+                <li><a href="#"><span>CONTACT</span><span>聯絡我們</span></a></li>
+            </ul>
+        </div>
+        <div class="content contents-products">
+            <h4>{{ category }}</h4>
+            <ul class="items">
+                <li class="item" v-for="product in showProducts" :key="product.id">
+                    <a href="#">
+                        <div class="card-img" :style="`background-image: url(${product.imageUrl[0]})`">
+                            <button type="button" class="add-btn" @click.prevent="addToCart(product)">Add to Cart</button>
+                        </div>
+                        <div class="card-text">
+                            <h5 class="card-title">{{ product.title }}</h5>
+                            <p class="sale-price">NT${{ product.price | thousands }}<span class="sale-icon" v-if="product.price !== product.origin_price">sale</span></p>
+                            <p class="origin-price" v-if="product.price !== product.origin_price">NT${{ product.origin_price | thousands}}</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer">
+            <div class="text">
+                <p>© Hurley Furniture 2020 All Rights Reserved.</p>
+                <p>圖片為練習使用，無商業用途。</p>
+            </div>
+        </div>
+        <div is="gotop"></div>
+        <loading :active.sync="isLoading"></loading>
+        <div class="mask" :class="{ 'open': shoppingCartOpen }" @click.prevent="shoppingCartOpen = !shoppingCartOpen"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue-loading-overlay@3.3.2/dist/vue-loading.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/products.js" type="module"></script>
+</body>
+
+</html>
