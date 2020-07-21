@@ -53,15 +53,15 @@
                 <li><a href="#" @click.prevent="getProducts('All'), openMainMenu = !openMainMenu"><span>ALL PRODUCTS</span><span>所有商品</span></a></li>
                 <li class="top__all-product"><a href="#" @click.prevent="openMenu = !openMenu"><span>PRODUCT CATEGORY &nbsp▸</span><span>分類單品 &nbsp▸</span></a>
                     <ul class="top__all-product-list" :class="{ 'show': openMenu }">
-                        <li><a href="cart.html" @click.prevent="getProducts('Sofa'), openMainMenu = !openMainMenu">Sofa</a></li>
-                        <li><a href="cart.html" @click.prevent="getProducts('Chair'), openMainMenu = !openMainMenu">Chair</a></li>
-                        <li><a href="cart.html" @click.prevent="getProducts('Table'), openMainMenu = !openMainMenu">Table</a></li>
-                        <li><a href="cart.html" @click.prevent="getProducts('Cabinet'), openMainMenu = !openMainMenu">Cabinet</a></li>
-                        <li><a href="cart.html" @click.prevent="getProducts('Side Table'), openMainMenu = !openMainMenu">Side Table</a></li>
-                        <li><a href="cart.html" @click.prevent="getProducts('Lighting'), openMainMenu = !openMainMenu">Lighting</a></li>
+                        <li><a href="index.html" @click.prevent="getProducts('Sofa'), openMainMenu = !openMainMenu">Sofa</a></li>
+                        <li><a href="index.html" @click.prevent="getProducts('Chair'), openMainMenu = !openMainMenu">Chair</a></li>
+                        <li><a href="index.html" @click.prevent="getProducts('Table'), openMainMenu = !openMainMenu">Table</a></li>
+                        <li><a href="index.html" @click.prevent="getProducts('Cabinet'), openMainMenu = !openMainMenu">Cabinet</a></li>
+                        <li><a href="index.html" @click.prevent="getProducts('Side Table'), openMainMenu = !openMainMenu">Side Table</a></li>
+                        <li><a href="index.html" @click.prevent="getProducts('Lighting'), openMainMenu = !openMainMenu">Lighting</a></li>
                     </ul>
                 </li>
-                <li><a href="#" @click.prevent="getProducts('Sale'), openMainMenu = !openMainMenu"><span>SALE</span><span>限時特價</span></a></li>
+                <li><a href="index.html" @click.prevent="getProducts('Sale'), openMainMenu = !openMainMenu"><span>SALE</span><span>限時特價</span></a></li>
                 <li><a href="#"><span>SHIPPING GUIDE</span><span>運送須知</span></a></li>
                 <li><a href="#"><span>CONTACT</span><span>聯絡我們</span></a></li>
             </ul>
@@ -70,7 +70,7 @@
         <div class="header">
             <div class="header__logo-wrap">
                 <div class="logo-frame"></div>
-                <h1><a href="index.html" class="logo">Hurley Furniture</a></h1>
+                <h1><a href="#" class="logo">Hurley Furniture</a></h1>
             </div>
             <div class="header__banner-products" v-if="category === 'All Products'" 
             :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5d567834662a0611dc105759/1400x.webp?source_format=jpg)`"></div>
@@ -89,37 +89,37 @@
             <div class="header__banner-products" v-if="category === 'Sale'" 
             :style="`background-image: url(https://shoplineimg.com/5cd8dc7015c0710001011ee2/5cf8fdd4e33efe001a669719/1400x.webp?source_format=jpg)`"></div>
             <ul class="header__main-menu">
-                <li><a href="index.html"><span>HOME</span><span>首頁</span></a></li>
+                <li><a href="#"><span>HOME</span><span>首頁</span></a></li>
                 <li><a href="#" @click.prevent="getProducts('All')"><span>ALL PRODUCTS</span><span>所有商品</span></a></li>
                 <li class="header__all-product"><a href="#" @click.prevent="openMenu = !openMenu"><span>PRODUCT CATEGORY &nbsp▾</span><span>分類單品 &nbsp▾</span></a>
                     <ul class="header__all-product-list" :class="{ 'show': openMenu }">
-                        <li><a href="products.html" @click.prevent="getProducts('Sofa'), openMenu = !openMenu">
+                        <li><a href="index.html" @click.prevent="getProducts('Sofa'), openMenu = !openMenu">
                                 <img src="img/sofa-04.png" alt="">
                                 <p>Sofa</p>
                             </a></li>
-                        <li><a href="products.html" @click.prevent="getProducts('Chair'), openMenu = !openMenu">
+                        <li><a href="index.html" @click.prevent="getProducts('Chair'), openMenu = !openMenu">
                                 <img src="img/chair-04.png" alt="">
                                 <p>Chair</p>
                             </a></li>
-                        <li><a href="products.html" @click.prevent="getProducts('Table'), openMenu = !openMenu">
+                        <li><a href="index.html" @click.prevent="getProducts('Table'), openMenu = !openMenu">
                                 <img src="img/table-04.png" alt="">
                                 <p>Table</p>
                             </a></li>
-                        <li><a href="products.html" @click.prevent="getProducts('Cabinet'), openMenu = !openMenu">
+                        <li><a href="index.html" @click.prevent="getProducts('Cabinet'), openMenu = !openMenu">
                                 <img src="img/cabinet-04.png" alt="">
                                 <p>Cabinet</p>
                             </a></li>
-                        <li><a href="products.html" @click.prevent="getProducts('Side Table'), openMenu = !openMenu">
+                        <li><a href="index.html" @click.prevent="getProducts('Side Table'), openMenu = !openMenu">
                                 <img src="img/sidetable-04.png" alt="">
                                 <p>Side Table</p>
                             </a></li>
-                        <li><a href="products.html" @click.prevent="getProducts('Lighting'), openMenu = !openMenu">
+                        <li><a href="index.html" @click.prevent="getProducts('Lighting'), openMenu = !openMenu">
                                 <img src="img/lamp-04.png" alt="">
                                 <p>Lighting</p>
                             </a></li>
                     </ul>
                 </li>
-                <li><a href="#" @click.prevent="getProducts('Sale')"><span>SALE</span><span>限時特價</span></a></li>
+                <li><a href="index.html" @click.prevent="getProducts('Sale')"><span>SALE</span><span>限時特價</span></a></li>
                 <li><a href="#"><span>SHIPPING GUIDE</span><span>運送須知</span></a></li>
                 <li><a href="#"><span>CONTACT</span><span>聯絡我們</span></a></li>
             </ul>
@@ -154,7 +154,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue-loading-overlay@3.3.2/dist/vue-loading.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="js/products.js" type="module"></script>
+    <script src="js/index.js" type="module"></script>
 </body>
 
 </html>
