@@ -923,6 +923,11 @@ select {
   background: rgba(170, 170, 170, 0.1);
 }
 
+.footer.footer-white {
+  margin-top: 0;
+  background: white;
+}
+
 .footer .text {
   display: -webkit-box;
   display: -ms-flexbox;
