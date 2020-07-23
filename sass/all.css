@@ -1457,6 +1457,10 @@ select {
       align-self: flex-start;
 }
 
+.form-wrap .input-wrap .form-group label span {
+  color: #b42424;
+}
+
 .form-wrap .input-wrap .form-group input, .form-wrap .input-wrap .form-group select, .form-wrap .input-wrap .form-group textarea {
   margin-top: 7px;
 }
@@ -1468,11 +1472,10 @@ select {
 .form-wrap .input-wrap .form-group p {
   width: 100%;
   font-size: 12px;
-  font-weight: 300;
   padding-top: 5px;
   -ms-flex-item-align: start;
       align-self: flex-start;
-  color: #c4ac8a;
+  color: #b42424;
 }
 
 .form-wrap .input-wrap button {

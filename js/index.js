@@ -49,6 +49,7 @@ new Vue({
                 .then( response => {
                     vm.isLoading = false;
                     vm.products = response.data.data;
+
                     vm.products.forEach( product => {
                         if (category === product.category) {
                             vm.showProducts.push(product);
@@ -63,7 +64,7 @@ new Vue({
                             }
                         }
                     });
-                    console.log(vm.products)
+                    console.log(vm.products);
                 })
                 .catch( error =>{
                     console.log(error);
@@ -80,7 +81,6 @@ new Vue({
                     vm.cart.forEach((item) => {
                         vm.totalPrice += item.product.price;
                     });
-                    console.log(vm.cart);
                 })
                 .catch( error => {
                     console.log(error);
@@ -93,6 +93,11 @@ new Vue({
             axios.delete(url)
                 .then(() => {
                     vm.isLoading = false;
+                    vm.products.forEach(product => {
+                        if (id === product.id) {
+                            product.addCart = false;
+                        }
+                    });
                     vm.getCart();
                 })
                 .catch(error => {
@@ -113,7 +118,8 @@ new Vue({
                     vm.getCart();
                 })
                 .catch(error => {
-                    console.log(error);
+                    vm.isLoading = false;
+                    console.log(error.response.data.errors);
                 });
         },
         qtyUpdate(id, num) {

@@ -70,8 +70,6 @@ new Vue({
             vm.totalPrice = 0;
             vm.cart.forEach((item) => {
                 vm.totalPrice += (item.product.price * item.quantity);
-                console.log(item.product.price, item.quantity);
-                console.log(vm.totalPrice);
             });
             if (vm.totalPrice > 3000) {
                 vm.deliveryFee = 0;

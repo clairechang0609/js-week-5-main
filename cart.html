@@ -217,28 +217,28 @@
                             <div class="input-wrap">
                                 <div class="form-group">
                                     <validation-provider rules="required" v-slot="{ errors }">
-                                        <label for="reciever-name">收件人姓名</label>
+                                        <label for="reciever-name">收件人姓名 <span>*</span></label>
                                         <input type="text" id="reciever-name" name="收件人姓名" v-model="form.name">
                                         <p>{{ errors[0] }}</p>
                                     </validation-provider>
                                 </div>
                                 <div class="form-group">
                                     <validation-provider rules="required|email" v-slot="{ errors }">
-                                        <label for="email">電子信箱</label>
+                                        <label for="email">電子信箱 <span>*</span></label>
                                         <input type="email" id="email" name="電子信箱" v-model="form.email">
                                         <p>{{ errors[0] }}</p>
                                     </validation-provider>
                                 </div>
                                 <div class="form-group">
                                     <validation-provider rules="required|min:8" v-slot="{ errors }">
-                                        <label for="reciever-tel">收件人電話</label>
+                                        <label for="reciever-tel">收件人電話 <span>*</span></label>
                                         <input type="tel" id="reciever-tel" name="收件人電話" v-model="form.tel">
                                         <p>{{ errors[0] }}</p>
                                     </validation-provider>
                                 </div>
                                 <div class="form-group">
                                     <validation-provider rules="required" v-slot="{ errors }">
-                                        <label for="address">地址</label>
+                                        <label for="address">地址 <span>*</span></label>
                                         <input type="text" id="address" name="地址" v-model="form.address">
                                         <p>{{ errors[0] }}</p>
                                     </validation-provider>
