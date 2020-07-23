@@ -56,12 +56,13 @@ new Vue({
             this.isLoading = true;
             const url = `${vm.id.apiPath}${vm.id.uuid}/ec/shopping`;
             axios.get(url)
-                .then((response) => {
+                .then( response => {
                     vm.isLoading = false;
                     vm.cart = response.data.data;
                     vm.getTotalPrice();
                 })
-                .catch(error => {
+                .catch( error => {
+                    vm.isLoading = false;
                     console.log(error);
                 })
         },
@@ -86,7 +87,8 @@ new Vue({
                     vm.isLoading = false;
                     vm.getCart();
                 })
-                .catch(error => {
+                .catch( error => {
+                    vm.isLoading = false;
                     console.log(error);
                 })
         },
@@ -104,7 +106,8 @@ new Vue({
                         vm.isLoading = false;
                         vm.getCart();
                     })
-                    .catch(error => {
+                    .catch( error => {
+                        vm.isLoading = false;
                         console.log(error);
                     })
             } else {
@@ -114,7 +117,8 @@ new Vue({
                         vm.isLoading = false;
                         vm.getCart();
                     })
-                    .catch(error => {
+                    .catch( error => {
+                        vm.isLoading = false;
                         console.log(error);
                     })
             }
@@ -125,13 +129,13 @@ new Vue({
             const url = `${vm.id.apiPath}${vm.id.uuid}/ec/orders`;
             const editOrder = Object.assign({}, vm.form);
             axios.post(url, editOrder)
-                .then((response) => {
+                .then( response => {
                     if (response.data.data.id) {
                         vm.isLoading = false;
                         vm.getCart(); //清空購物車
                     }
                 })
-                .catch((error) => {
+                .catch( error => {
                     this.isLoading = false;
                     console.log(error.response.data.errors);
                 });

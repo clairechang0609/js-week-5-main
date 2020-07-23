@@ -67,6 +67,7 @@ new Vue({
                     console.log(vm.products);
                 })
                 .catch( error =>{
+                    vm.isLoading = false;
                     console.log(error);
                 })
         },
@@ -83,6 +84,7 @@ new Vue({
                     });
                 })
                 .catch( error => {
+                    vm.isLoading = false;
                     console.log(error);
                 })
         },
@@ -101,6 +103,7 @@ new Vue({
                     vm.getCart();
                 })
                 .catch(error => {
+                    vm.isLoading = false;
                     console.log(error);
                 })
         },
@@ -137,6 +140,7 @@ new Vue({
                         vm.getCart();
                     })
                     .catch(error => {
+                        vm.isLoading = false;
                         console.log(error);
                     })
             } else {
@@ -147,6 +151,7 @@ new Vue({
                         vm.getCart();
                     })
                     .catch(error => {
+                        vm.isLoading = false;
                         console.log(error);
                     })
             }
